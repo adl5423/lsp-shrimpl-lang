@@ -1,0 +1,10 @@
+{
+  "iconDefinitions": {
+    "shrIcon": {
+      "iconPath": "./icons/shr.png"
+    }
+  },
+  "fileExtensions": {
+    "shr": "shrIcon"
+  }
+}

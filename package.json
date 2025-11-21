@@ -1,0 +1,94 @@
+{
+  "name": "shrimpl",
+  "displayName": "Shrimpl",
+  "description": "Language support for the Shrimpl language (LSP + syntax).",
+  "version": "0.1.0",
+  "publisher": "bdt-apex",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:shrimpl"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "shrimpl",
+        "aliases": [
+          "Shrimpl"
+        ],
+        "extensions": [
+          ".shr"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "shrimpl",
+        "scopeName": "source.shrimpl",
+        "path": "./syntaxes/shrimpl.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Shrimpl",
+      "properties": {
+        "shrimpl.lsp.path": {
+          "type": "string",
+          "default": "shrimpl-lsp",
+          "description": "Command used to start the Shrimpl language server (absolute path or executable name)."
+        },
+        "shrimpl.lsp.debugArgs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "--log-level",
+            "debug"
+          ],
+          "description": "Additional arguments passed to the Shrimpl language server when running in debug mode."
+        },
+        "shrimpl.trace.server": {
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Trace level for the Shrimpl language server."
+        }
+      }
+    },
+    "iconThemes": [
+      {
+        "id": "shrimpl-icons",
+        "label": "Shrimpl Icons",
+        "path": "./icon-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "echo \"no lint configured\"",
+    "test": "echo \"no tests configured\""
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.0.0",
+    "vsce": "^2.15.0"
+  },
+  "license": "MIT"
+}

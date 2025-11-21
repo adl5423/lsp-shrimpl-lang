@@ -1,0 +1,82 @@
+{
+  "name": "Shrimpl",
+  "scopeName": "source.shrimpl",
+  "fileTypes": ["shr"],
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#keywords" },
+    { "include": "#http-methods" },
+    { "include": "#endpoint-decl" },
+    { "include": "#function-decl" },
+    { "include": "#class-decl" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.number-sign.shrimpl",
+          "match": "#.*$"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.shrimpl",
+          "begin": "\"",
+          "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.shrimpl" } },
+          "end": "\"",
+          "endCaptures": { "0": { "name": "punctuation.definition.string.end.shrimpl" } },
+          "patterns": [{ "name": "constant.character.escape.shrimpl", "match": "\\\\." }]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        { "name": "constant.numeric.shrimpl", "match": "\\b\\d+(?:\\.\\d+)?\\b" }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.shrimpl",
+          "match": "\\b(server|func|class|endpoint|json|return)\\b"
+        }
+      ]
+    },
+    "http-methods": {
+      "patterns": [
+        {
+          "name": "support.constant.httpmethod.shrimpl",
+          "match": "\\b(GET|POST|PUT|DELETE|PATCH)\\b"
+        }
+      ]
+    },
+    "function-decl": {
+      "patterns": [
+        {
+          "name": "entity.name.function.shrimpl",
+          "match": "\\bfunc\\s+([A-Za-z_][A-Za-z0-9_]*)"
+        }
+      ]
+    },
+    "class-decl": {
+      "patterns": [
+        {
+          "name": "entity.name.type.class.shrimpl",
+          "match": "\\bclass\\s+([A-Za-z_][A-Za-z0-9_]*)"
+        }
+      ]
+    },
+    "endpoint-decl": {
+      "patterns": [
+        {
+          "name": "meta.endpoint.shrimpl",
+          "match": "\\bendpoint\\s+GET|POST|PUT|DELETE|PATCH\\b"
+        }
+      ]
+    }
+  }
+}
